@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import GlitchMap from './components/GlitchMap';
+import { div } from 'framer-motion/m';
 
 export default function Home() {
   const [typedText, setTypedText] = useState("");
@@ -135,12 +137,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* Visual Placeholder for Glitch Map */}
-            <div className="relative h-80 bg-slate-50 border border-slate-200 rounded-lg overflow-hidden flex items-center justify-center p-8">
-               <div className="text-center">
-                  <span className="material-symbols-outlined text-6xl text-slate-300 mb-4">hub</span>
-                  <p className="font-mono text-xs text-slate-400 uppercase">Network Topology Visualization</p>
-               </div>
+            
+            {/* Glitch Map Component - REPLACED HERE */}
+            <div className="h-80 w-full">
+              <GlitchMap />
             </div>
           </div>
         </div>
