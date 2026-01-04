@@ -129,11 +129,11 @@ export default function Home() {
               <h2 className="text-red-600 font-mono text-sm font-bold mb-2">System Diagnostic: Fragmented</h2>
               <h3 className="text-3xl font-bold text-slate-900 mb-6">Why Manchester booms, and we don't.</h3>
               <div className="prose text-slate-600 leading-relaxed space-y-4">
-                <p>It is a question of topology. Greater Manchester is booming because of <strong className="text-slate-900">Physical Density</strong>; stacking investment, talent, and infrastructure in a tight central core.</p>
-                <p>Lancashire operates as a distributed network of towns (nodes) functioning in isolation. This fragmentation causes <strong className="text-red-600">Wealth Leakage</strong>. Capital flows in but without a cohesive system to retain it, Lancashire's capital flows out to multinational shareholders.</p>
+                <p>It is a question of topology, not local administrative boundaries. Greater Manchester is booming because of <strong className="text-slate-900">Physical Density</strong>; stacking investment, talent, and infrastructure in a tight urban core is a competitive advantage.</p>
+                <p>Lancashire operates as a distributed network of towns (nodes) functioning in isolation. This fragmentation causes <strong className="text-red-600">Wealth Leakage</strong>. Capital flows in with business and investment, but without a cohesive system to retain and distribute it, Lancashire's wealth flows back out and locals suffer as a result.</p>
                 <div className="bg-red-50 border-l-4 border-red-600 p-4 mt-6">
                   <p className="font-bold text-red-900 text-sm">THE PROPOSAL:</p>
-                  <p className="text-red-800 text-sm mt-1">We cannot rebuild our geography, but we can reprogram our topology. By connecting our anchor institutions, worker cooperatives, and public services digitally, we create <strong className="uppercase">Virtual Density</strong>—a cybernetic network that rivals the big cities.</p>
+                  <p className="text-red-800 text-sm mt-1">We cannot rebuild our geography, but we can reprogram our topology. By connecting our anchor institutions, worker cooperatives, and public services digitally, we create <strong className="uppercase">Virtual Density</strong>; a cybernetic network that rivals the big cities and empowers local communities.</p>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function Home() {
             <h2 className="text-red-600 font-mono text-sm font-bold mb-2">System Architecture</h2>
             <h3 className="text-3xl font-bold text-slate-900">The VSM Stack</h3>
             <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-              Modeled on Stafford Beer's <span className="font-semibold text-slate-900">Viable System Model</span>. Lancs.OS is not just an web app; it is a vision for a recursive governance structure covering all 5 layers of a functioning society.
+              Modeled on Stafford Beer's <span className="font-semibold text-slate-900">Viable System Model</span>. Lancs.OS is not just an web app; it is a vision for a recursive digital governance structure capable of coordinating all 5 layers of society irrelevant to local administrative changes.
             </p>
           </div>
 
