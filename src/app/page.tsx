@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import GlitchMap from './components/GlitchMap';
-import { div } from 'framer-motion/m';
 
 export default function Home() {
   const [typedText, setTypedText] = useState("");
@@ -40,8 +39,8 @@ export default function Home() {
               <span className="font-mono font-bold text-lg tracking-tight text-slate-900">Lancs.OS<span className="text-slate-400">_v1.0</span></span>
             </div>
             <div className="hidden md:flex space-x-8 font-mono text-sm">
-              <a href="#glitch" className="text-slate-600 hover:text-red-600 transition-colors">./problem</a>
-              <a href="#architecture" className="text-slate-600 hover:text-red-600 transition-colors">./architecture</a>
+              <a href="#problem" className="text-slate-600 hover:text-red-600 transition-colors">./problem</a>
+              <a href="#architecture" className="text-slate-600 hover:text-red-600 transition-colors">./vsm_stack</a>
               <a href="#modules" className="text-slate-600 hover:text-red-600 transition-colors">./modules</a>
               <a href="#join" className="text-red-600 font-bold border border-red-100 bg-red-50 px-3 py-1 rounded hover:bg-red-600 hover:text-white transition-all">sudo join</a>
             </div>
@@ -72,11 +71,12 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button className="px-6 py-3 bg-red-600 text-white font-mono rounded-md hover:bg-red-700 transition-all shadow-lg shadow-red-200 flex items-center justify-center gap-2">
-                <span>[ Execute Patch ]</span>
+                <span className="material-symbols-outlined text-sm">deployed_code_update</span>
+                <span>[Initialize Protocol]</span>
               </button>
               <button className="px-6 py-3 border border-slate-300 text-slate-700 font-mono rounded-md hover:bg-white hover:border-slate-400 transition-all flex items-center justify-center gap-2 bg-white/50">
                 <span className="material-symbols-outlined text-sm">description</span>
-                <span>[ Read Whitepaper ]</span>
+                <span>[Read Whitepaper]</span>
               </button>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Home() {
               </div>
               
               {/* Terminal Body */}
-              <div className="p-6 text-slate-300 min-h-[340px] flex flex-col font-medium">
+              <div className="p-6 text-slate-300 min-h-[350px] flex flex-col font-medium">
                 <div className="mb-4">
                   <span className="text-green-400">root@lancs:~$</span> <span>{typedText}</span><span className="cursor-blink w-2 h-4 bg-slate-400 inline-block align-middle ml-1"></span>
                 </div>
@@ -122,81 +122,132 @@ export default function Home() {
       </section>
 
       {/* The Problem (The Glitch) */}
-      <section id="glitch" className="py-24 bg-white border-y border-slate-200">
+      <section id="problem" className="py-24 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-red-600 font-mono text-sm font-bold mb-2">Error 404: Economy Fragmented</h2>
-              <h3 className="text-3xl font-bold text-slate-900 mb-6">Why Manchester wins, and we don't.</h3>
+              <h2 className="text-red-600 font-mono text-sm font-bold mb-2">System Diagnostic: Fragmented</h2>
+              <h3 className="text-3xl font-bold text-slate-900 mb-6">Why Manchester booms, and we don't.</h3>
               <div className="prose text-slate-600 leading-relaxed space-y-4">
-                <p>It's a concept called <strong className="text-slate-900">Stacking Bonuses</strong>. Manchester succeeds because it stacks density, investment, and talent in one central core.</p>
-                <p>Lancashire is different. We are a distributed network of towns functioning in isolation. This fragmentation causes <strong className="text-red-600">Wealth Leakage</strong>. Capital flows in, but immediately flows out to multinational shareholders instead of circulating locally.</p>
+                <p>It is a question of topology. Greater Manchester is booming because of <strong className="text-slate-900">Physical Density</strong>; stacking investment, talent, and infrastructure in a tight central core.</p>
+                <p>Lancashire operates as a distributed network of towns (nodes) functioning in isolation. This fragmentation causes <strong className="text-red-600">Wealth Leakage</strong>. Capital flows in but without a cohesive system to retain it, Lancashire's capital flows out to multinational shareholders.</p>
                 <div className="bg-red-50 border-l-4 border-red-600 p-4 mt-6">
-                  <p className="font-bold text-red-900 text-sm">THE FIX:</p>
-                  <p className="text-red-800 text-sm mt-1">We don't need to build skyscrapers. We need to build a <strong>Cybernetic Network</strong>. By connecting our anchor institutions digitally, we create a virtual density that rivals the big cities.</p>
+                  <p className="font-bold text-red-900 text-sm">THE PROPOSAL:</p>
+                  <p className="text-red-800 text-sm mt-1">We cannot rebuild our geography, but we can reprogram our topology. By connecting our anchor institutions, worker cooperatives, and public services digitally, we create <strong className="uppercase">Virtual Density</strong>—a cybernetic network that rivals the big cities.</p>
                 </div>
               </div>
             </div>
             
-            {/* Glitch Map Component - REPLACED HERE */}
-            <div className="h-80 w-full">
+            {/* Density Map Component */}
+            <div className="h-[400px] w-full">
               <GlitchMap />
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Architecture */}
+      {/* The Architecture (VSM) */}
       <section id="architecture" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-red-600 font-mono text-sm font-bold mb-2">System Architecture</h2>
             <h3 className="text-3xl font-bold text-slate-900">The VSM Stack</h3>
-            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">Modeled on Stafford Beer's Viable System Model. We are building three digital layers to coordinate the county's real-world economy.</p>
+            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+              Modeled on Stafford Beer's <span className="font-semibold text-slate-900">Viable System Model</span>. Lancs.OS is not just an web app; it is a vision for a recursive governance structure covering all 5 layers of a functioning society.
+            </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {/* Layer 1 */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex gap-6 hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 flex-shrink-0">
-                <span className="material-symbols-outlined text-3xl">radar</span>
-              </div>
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <h4 className="text-xl font-bold text-slate-900">Layer 1: The Economic Grid</h4>
-                  <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">System 1-3</span>
-                </div>
-                <p className="text-slate-600">A <strong className="text-slate-900">Procurement Radar</strong> that maps every pound spent by our Anchor Institutions. It detects wealth leakage and automatically matches contracts to local worker-cooperatives.</p>
-              </div>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             
-            {/* Layer 2 */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex gap-6 hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 flex-shrink-0">
-                <span className="material-symbols-outlined text-3xl">wallet</span>
+            {/* System 1: Operations */}
+            <div className="bg-white rounded-xl shadow-sm border-t-4 border-slate-400 p-6 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-4">
+                <span className="material-symbols-outlined text-3xl text-slate-700">factory</span>
+                <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500 font-bold">SYSTEM 1</span>
               </div>
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <h4 className="text-xl font-bold text-slate-900">Layer 2: The Social Sensor</h4>
-                  <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">System 4</span>
-                </div>
-                <p className="text-slate-600">The <strong className="text-slate-900">Civic Wallet</strong>. Data sovereignty for citizens. A localized digital identity that allows residents to accrue "Civic Credits" for volunteering and shopping local.</p>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Operations</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                The <strong className="text-slate-900">"Here and Now"</strong>. Resident producers and organisations creating real value for locals.
+              </p>
+              <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-mono">
+                <span className="font-bold text-slate-700">IMPLEMENTATION EXAMPLES:</span><br/>
+                Networked Worker Co-ops & Guilds, Local SMEs, Councils and Community Land Trusts.
               </div>
             </div>
 
-            {/* Layer 3 */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex gap-6 hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 flex-shrink-0">
-                <span className="material-symbols-outlined text-3xl">how_to_vote</span>
+            {/* System 2: Coordination */}
+            <div className="bg-white rounded-xl shadow-sm border-t-4 border-slate-400 p-6 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-4">
+                <span className="material-symbols-outlined text-3xl text-slate-700">hub</span>
+                <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500 font-bold">SYSTEM 2</span>
               </div>
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <h4 className="text-xl font-bold text-slate-900">Layer 3: The Political Kernel</h4>
-                  <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">System 5</span>
-                </div>
-                <p className="text-slate-600"><strong className="text-slate-900">Participatory Democracy</strong> tools. Not just voting every 4 years, but real-time allocation of budget surpluses. The "Brain" of the county.</p>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Coordination</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Optimising resource use and cooperation between System 1 units (E.g. Co-ops, Councils).
+              </p>
+              <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-mono">
+                <span className="font-bold text-slate-700">IMPLEMENTATION EXAMPLES:</span><br/>
+                Shared Data Protocols, The 'LancsLoop' Integrated Transport Mesh & Services.
               </div>
             </div>
+
+            {/* System 3: Control/Optimization */}
+            <div className="bg-white rounded-xl shadow-sm border-t-4 border-slate-400 p-6 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-4">
+                <span className="material-symbols-outlined text-3xl text-slate-700">tune</span>
+                <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500 font-bold">SYSTEM 3</span>
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Optimization</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Resource allocation and synergy. Ensuring the whole is greater than the sum of parts.
+              </p>
+              <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-mono">
+                <span className="font-bold text-slate-700">IMPLEMENTATION EXAMPLES:</span><br/>
+                The Procurement Radar (AI-assisted procurement portal to local supply chains).
+              </div>
+            </div>
+
+            {/* System 4: Intelligence */}
+            <div className="bg-white rounded-xl shadow-sm border-t-4 border-red-500 p-6 hover:shadow-md transition-shadow md:col-start-1 lg:col-start-1 md:col-span-1">
+              <div className="flex justify-between items-start mb-4">
+                <span className="material-symbols-outlined text-3xl text-red-600">network_intelligence</span>
+                <span className="text-xs font-mono bg-red-50 text-red-600 px-2 py-1 rounded font-bold">SYSTEM 4</span>
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Intelligence</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Feeding insights back into the system, through audits, data-gathering and research.
+              </p>
+              <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-mono">
+                <span className="font-bold text-slate-700">IMPLEMENTATION EXAMPLES:</span><br/>
+                The Civic Sensor (Real-time volunter-citizen data collection for future need's analysis).
+              </div>
+            </div>
+
+            {/* System 5: Policy */}
+            <div className="bg-white rounded-xl shadow-sm border-t-4 border-red-500 p-6 hover:shadow-md transition-shadow md:col-span-1">
+              <div className="flex justify-between items-start mb-4">
+                <span className="material-symbols-outlined text-3xl text-red-600">how_to_vote</span>
+                <span className="text-xs font-mono bg-red-50 text-red-600 px-2 py-1 rounded font-bold">SYSTEM 5</span>
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Identity & Policy</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Balancing the values and policy of the system (local citizens) with long-term goals.
+              </p>
+              <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-mono">
+                <span className="font-bold text-slate-700">IMPLEMENTATION EXAMPLES:</span><br/>
+                People's Assemblies, Participatory Budgeting & Digital Democracy.
+              </div>
+            </div>
+
+            {/* Recursion Concept */}
+            <div className="bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col justify-center items-center text-center">
+              <span className="material-symbols-outlined text-4xl text-green-400 mb-2">all_inclusive</span>
+              <h4 className="text-lg font-bold text-white mb-2">Recursion</h4>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                These 5 layers exist and cooperate at every level of society: the whole County, every individual Town, Institution and Co-operative within it.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
