@@ -1,32 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --lancs-red: #DA291C;
+@theme {
+  /* ... (Keep your existing color variables here) ... */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Fonts */
+  --font-heading: var(--font-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
-body {
-  background-color: #f8fafc;
-  /* Swiss Grid Background */
-  background-size: 40px 40px;
-  background-image:
-      linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+@layer base {
+  :root {
+    /* BACKGROUND: Technical Dark Slate */
+    --background: 222 35% 15%; 
+    --foreground: 210 40% 98%;
+
+    /* CARD: Slightly lighter slate */
+    --card: 222 35% 19%;
+    --card-foreground: 210 40% 98%;
+
+    /* PRIMARY: "LANCASHIRE BRICK" (Unified Orange) */
+    /* This is the single source of truth for the Orange */
+    --primary: 16 85% 55%; 
+    --primary-foreground: 0 0% 100%;
+
+    /* ACCENT: Sage Green (For "Active" / "Success" states) */
+    --accent: 150 40% 45%;
+    --accent-foreground: 210 40% 98%;
+
+    /* BORDERS */
+    --border: 217 30% 30%;
+    
+    --radius: 2px;
+  }
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Enforce Monospace as the default body font for the "Technical" look */
+    font-family: var(--font-mono); 
+    /* Set a comfortable base size for readability */
+    font-size: 16px; 
+    line-height: 1.6;
+  }
+  
+  /* Only H1, H2, H3 use the Serif */
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+  }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+@layer utilities {
+  .bg-grid-paper {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  }
 }
