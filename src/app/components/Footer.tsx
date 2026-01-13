@@ -13,7 +13,7 @@ export default function Footer() {
         
         <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-12 max-w-2xl mx-auto">
           Building the digital infrastructure for a sovereign Lancashire.<br/>
-          From the Ribble Valley to the cloud.
+          From the Ribble Valley to the Cloud.
         </p>
         
         <div className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-sm font-bold text-slate-500 uppercase tracking-widest">
@@ -24,7 +24,7 @@ export default function Footer() {
         
         <div className="mt-16 pt-8 border-t border-border">
           <span className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-widest">
-            EST. 2026 <span className="text-primary mx-2">//</span> PRESTON, LANCASHIRE <span className="text-primary mx-2">//</span> DIGITAL DISTRIBUTISM
+            EST. 2026 <span className="text-primary mx-2">//</span> PRESTON, LANCASHIRE <span className="text-primary mx-2">//</span> CYBER DISTRIBUTISM
           </span>
         </div>
       </div>

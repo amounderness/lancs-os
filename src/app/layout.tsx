@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lancs.OS | Red Rose Systems",
+  title: "Lancs.OS | Building Freedom",
   description: "The Civic Operating System",
 };
 

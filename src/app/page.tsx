@@ -39,7 +39,7 @@ export default function Home() {
 
           <p className="font-mono text-sm md:text-base text-slate-300 max-w-lg mx-auto mb-12 uppercase tracking-wide leading-relaxed">
             We are building a <strong>Civic Operating System</strong> for Lancashire. 
-            Merging cybernetic coordination with widespread local ownership.
+            Merging cybernetic coordination with distributed local ownership.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -71,18 +71,23 @@ export default function Home() {
                 The Absentee Economy.
               </h2>
             </div>
-            
             <div className="prose prose-invert prose-lg text-slate-400 font-serif leading-relaxed">
               <p>
                 Lancashire works hard. We generate billions in value every year. 
                 Yet our high streets are empty, and our services are crumbling. Why?
               </p>
+              <br></br>
               <p>
-                <strong>Because we don't own the infrastructure.</strong>
+                <span className="text-slate-200 strong">Because we don't own the infrastructure.</span>
               </p>
+              <br></br>
               <p>
                 When a hospital buys food from a global giant, or a council pays for software from Silicon Valley, 
-                that money leaves the county instantly. It is <span className="text-slate-200 italic">extraction by design</span>.
+                that money leaves the county instantly.
+              </p>
+              <br></br>
+              <p>
+                <span className="text-slate-200 strong">It is extraction by design</span>.
               </p>
             </div>
           </div>
@@ -135,7 +140,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             
             {/* OPTION 1: THE OS */}
-            <Link href="/lancs-os" className="group relative block h-full">
+            <Link href="/the-os" className="group relative block h-full">
               <div className="absolute inset-0 bg-primary/20 blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
               <div className="relative h-full border border-border bg-card p-10 hover:border-primary transition-colors flex flex-col justify-between">
                 <div>
@@ -152,7 +157,7 @@ export default function Home() {
             </Link>
 
             {/* OPTION 2: THE BLUEPRINT */}
-            <Link href="/blueprint" className="group relative block h-full">
+            <Link href="/the-blueprint" className="group relative block h-full">
               <div className="absolute inset-0 bg-slate-500/10 blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
               <div className="relative h-full border border-border bg-card p-10 hover:border-slate-400 transition-colors flex flex-col justify-between">
                 <div>

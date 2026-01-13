@@ -1,61 +1,123 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, useEffect, useState } from 'react';
 
-// Coordinates for major Lancashire hubs (Abstracted to 0-100 grid)
-const nodes = [
-  { id: 'LAN', x: 50, y: 20, label: 'Lancaster' },
-  { id: 'BPL', x: 20, y: 50, label: 'Blackpool' },
-  { id: 'PRE', x: 50, y: 55, label: 'Preston' }, // The Hub
-  { id: 'BBN', x: 70, y: 55, label: 'Blackburn' },
-  { id: 'BUR', x: 80, y: 45, label: 'Burnley' },
-  { id: 'WLC', x: 30, y: 70, label: 'West Lancs' },
-];
+// Configuration for the map generation
+const NODE_COUNT = 84;
+const CONNECTION_DISTANCE = 30; // Percentage distance to connect
+
+interface Node {
+  id: number;
+  x: number; // Percentage 0-100
+  y: number; // Percentage 0-100
+  size: number;
+  isHub: boolean;
+  pulseDelay: number;
+}
+
+interface Link {
+  id: string;
+  source: Node;
+  target: Node;
+  opacity: number;
+}
 
 export default function NetworkMap() {
-  return (
-    <div className="relative w-full h-full opacity-40 hover:opacity-100 transition-opacity duration-1000">
-      <svg className="w-full h-full text-emerald-500/20">
-        {/* Draw lines from Preston (Hub) to others */}
-        {nodes.map((node, i) => {
-          if (node.id === 'PRE') return null;
-          return (
-            <motion.line
-              key={i}
-              x1="50%" y1="55%" // Preston coords
-              x2={`${node.x}%`} y2={`${node.y}%`}
-              stroke="currentColor"
-              strokeWidth="1"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 2, delay: i * 0.2 }}
-            />
-          );
-        })}
-      </svg>
+  // Use state to ensure hydration matches (Next.js server/client match)
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [links, setLinks] = useState<Link[]>([]);
 
-      {/* Render Nodes */}
-      {nodes.map((node) => (
-        <motion.div
-          key={node.id}
-          className="absolute transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center"
-          style={{ left: `${node.x}%`, top: `${node.y}%` }}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          {/* The Dot */}
-          <div className={`w-3 h-3 rounded-full border border-slate-900 ${
-            node.id === 'PRE' ? 'bg-rose-500 shadow-[0_0_15px_rgba(225,29,72,0.5)]' : 'bg-slate-700'
-          }`} />
-          
-          {/* The Label */}
-          <span className="mt-2 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
-            {node.id}
-          </span>
-        </motion.div>
-      ))}
+  useEffect(() => {
+    // 1. Generate Random Nodes
+    const newNodes: Node[] = Array.from({ length: NODE_COUNT }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() > 0.9 ? 4 : 2, // 10% are "Hubs" (bigger)
+      isHub: Math.random() > 0.9,
+      pulseDelay: Math.random() * 5,
+    }));
+
+    // 2. Generate Links based on distance
+    const newLinks: Link[] = [];
+    
+    newNodes.forEach((nodeA, i) => {
+      newNodes.slice(i + 1).forEach((nodeB) => {
+        // Calculate distance (pythagoras)
+        const dx = nodeA.x - nodeB.x;
+        const dy = nodeA.y - nodeB.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < CONNECTION_DISTANCE) {
+          newLinks.push({
+            id: `${nodeA.id}-${nodeB.id}`,
+            source: nodeA,
+            target: nodeB,
+            // Closer nodes = simpler opacity
+            opacity: 1 - distance / CONNECTION_DISTANCE,
+          });
+        }
+      });
+    });
+
+    setNodes(newNodes);
+    setLinks(newLinks);
+  }, []);
+
+  return (
+    <div className="w-full h-full overflow-hidden relative">
+      <svg 
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* DEFINITIONS FOR GLOW EFFECTS */}
+        <defs>
+          <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* 1. LINKS (Lines) */}
+        {links.map((link) => (
+          <line
+            key={link.id}
+            x1={`${link.source.x}%`}
+            y1={`${link.source.y}%`}
+            x2={`${link.target.x}%`}
+            y2={`${link.target.y}%`}
+            stroke="var(--color-primary)" // Use the rust/orange color
+            strokeWidth="1"
+            strokeOpacity={link.opacity * 0.15} // Very faint lines
+          />
+        ))}
+
+        {/* 2. NODES (Circles) */}
+        {nodes.map((node) => (
+          <g key={node.id}>
+            {/* Hub Pulse Effect (Only for big nodes) */}
+            {node.isHub && (
+              <circle
+                cx={`${node.x}%`}
+                cy={`${node.y}%`}
+                r={node.size * 4}
+                fill="url(#node-glow)"
+                className="animate-pulse origin-center"
+                style={{ animationDelay: `${node.pulseDelay}s`, animationDuration: '3s' }}
+              />
+            )}
+            
+            {/* The Actual Node */}
+            <circle
+              cx={`${node.x}%`}
+              cy={`${node.y}%`}
+              r={node.size}
+              fill="var(--color-primary)" // Solid Orange
+              fillOpacity={node.isHub ? 1 : 0.6}
+            />
+          </g>
+        ))}
+      </svg>
     </div>
   );
 }
