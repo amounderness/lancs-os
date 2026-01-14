@@ -38,7 +38,7 @@ export default function LancsOS() {
             <div className="hidden md:flex gap-6 bg-background/90 backdrop-blur-md p-4 border border-border rounded-sm pointer-events-auto">
                <div className="text-right">
                   <span className="block text-[10px] text-slate-500 font-mono uppercase tracking-widest">Potential Nodes</span>
-                  <span className="text-xl font-mono font-bold text-slate-200">264+</span>
+                  <span className="text-xl font-mono font-bold text-slate-200">219+</span>
                </div>
                <div className="w-px bg-border h-full mx-2"></div>
                <div className="text-right">

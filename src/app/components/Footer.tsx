@@ -12,7 +12,7 @@ export default function Footer() {
         </h3>
         
         <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-12 max-w-2xl mx-auto">
-          Building the digital infrastructure for a sovereign Lancashire.<br/>
+          Building a Civic Operating System for Lancashire.<br/>
           From the Ribble Valley to the Cloud.
         </p>
         
@@ -20,6 +20,7 @@ export default function Footer() {
           <a href="#" className="hover:text-primary transition-colors">GitHub</a>
           <a href="#" className="hover:text-primary transition-colors">Discord</a>
           <a href="#" className="hover:text-primary transition-colors">Contact</a>
+          <a href="#" className="hover:text-primary transition-colors">Sign-Up</a>
         </div>
         
         <div className="mt-16 pt-8 border-t border-border">

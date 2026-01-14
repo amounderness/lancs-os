@@ -3,8 +3,8 @@
 import React, { useMemo, useEffect, useState } from 'react';
 
 // Configuration for the map generation
-const NODE_COUNT = 84;
-const CONNECTION_DISTANCE = 30; // Percentage distance to connect
+const NODE_COUNT = 219; // Total number of nodes or Parishes
+const CONNECTION_DISTANCE = 15; // Percentage distance to connect
 
 interface Node {
   id: number;
@@ -33,7 +33,7 @@ export default function NetworkMap() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() > 0.9 ? 4 : 2, // 10% are "Hubs" (bigger)
+      size: Math.random() > 0.98 ? 3 : 1.5, // (Hubs 3px, Standard 1.5px)
       isHub: Math.random() > 0.9,
       pulseDelay: Math.random() * 5,
     }));
